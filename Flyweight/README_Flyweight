@@ -1,0 +1,10 @@
+Here is the source I took it from: https://www.youtube.com/watch?v=qscOsQV-K14&ab_channel=Geekific
+
+Here is the link to there repository to see the example code about the burger: https://github.com/geekific-official/geekific-youtube/
+
+1. Pretty straight forward that too much data causes problems on other peoples RAM.  
+
+For reference, here is some notable code from the reposity YT channel that should be noted 
+1. They used example of a directory of Books and that books have lots of data. But there are books that can be complied into certain topics for example some books have a theme of comedy, sadness, etc... 
+2. Recall from 202 at Colgate that there are such things as HashMap and HashSets that could help with uniqueness. So with this example, it uses BookType, Book, and BookFactory. BookFactory looks for uniqueness, and BookType categorizes, and Book is the specific attributes that are already unique. 
+3. Look at the code through the repository... Very useful. 
