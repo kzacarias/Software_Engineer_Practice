@@ -1,0 +1,18 @@
+This is the readme for DoubleBufferExample, I converted it to Java
+Ive used slashes to denote parts
+
+First Part:
+
+The first part instantiates the graphics system, it lays down colors and the commands for the graphics system. This is a class/object which then allows it to be
+duplicated later
+
+Second Part:
+This is where the two Buffers are instantiated. Current is the name of one and the other is next. "Current" is the visible buffer while "next" is the one drawing. This will stay true
+
+Third Part:
+Here is where the actual commands occur, so first it gives some basic draw commands and then calls on the swap() function which is defined towards the bottom. THis function basically swaps which buffer is being used. It makes the one drawing, the new "Current" and then makes the old current into "next", where it will take draw commands. 
+
+It is important to note that 
+one buffer draws and is not visible while the other is visible. 
+
+Now the Double Buffer has allowed for the visible buffer to be steady because the images were already drawn by the invisible buffer.

@@ -1,57 +1,62 @@
-import java.awt.*;
-import javax.swing.*;
+// Example code for Double Buffer, for Java you would need to import some sort of 
+//Graphics Library like Swing or AWT, for now this code presents the idea fine 
 
-public class DoubleBufferExample extends JPanel {
+class Framebuffer {
+    private static final int WIDTH = 160;
+    private static final int HEIGHT = 120;
+    private char[] pixels = new char[WIDTH * HEIGHT];
+    private static final char WHITE = 'W'; // Assuming 'W' represents white
+    private static final char BLACK = 'B'; // Assuming 'B' represents black
 
-    // Off-screen buffer
-    private Image offScreenImage = null;
-    private Graphics offScreenGraphics = null;
-    private Dimension screenDimension = null;
-
-    public DoubleBufferExample() {
-        // Initialize your application's visuals here
+    public Framebuffer() {
+        clear();
     }
 
-    // Method to handle the custom drawing
-    private void doDrawing(Graphics g) {
-        // Your drawing logic here, for example:
-        g.setColor(Color.BLUE);
-        g.fillRect(50, 50, 100, 100);  // Just an example
-    }
-
-    // Override the paintComponent method to implement double buffering
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        // Get the current size of the panel
-        Dimension currentDim = getSize();
-
-        // Check if the off-screen buffer needs to be recreated
-        if (offScreenImage == null || !currentDim.equals(screenDimension)) {
-            screenDimension = currentDim;
-            offScreenImage = createImage(screenDimension.width, screenDimension.height);
-            if (offScreenGraphics != null) {
-                offScreenGraphics.dispose();
-            }
-            offScreenGraphics = offScreenImage.getGraphics();
+    public void clear() {
+        for (int i = 0; i < WIDTH * HEIGHT; i++) {
+            pixels[i] = WHITE;
         }
-
-        // Clear the off-screen buffer
-        offScreenGraphics.clearRect(0, 0, screenDimension.width, screenDimension.height);
-
-        // Perform all drawing operations on the off-screen buffer
-        doDrawing(offScreenGraphics);
-
-        // Copy the off-screen buffer to the screen
-        g.drawImage(offScreenImage, 0, 0, this);
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Double Buffer Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new DoubleBufferExample());
-        frame.setSize(400, 400);
-        frame.setVisible(true);
+    public void draw(int x, int y) {
+        pixels[(WIDTH * y) + x] = BLACK;
+    }
+
+    public char[] getPixels() {
+        return pixels;
+    }
+}
+///////////////////////////
+class Scene {
+    private Framebuffer[] buffers = new Framebuffer[2];
+    private Framebuffer current;
+    private Framebuffer next;
+
+    public Scene() {
+        buffers[0] = new Framebuffer();
+        buffers[1] = new Framebuffer();
+        current = buffers[0];
+        next = buffers[1];
+    }
+/////////////////////////////
+    public void draw() {
+        next.clear();
+
+        // Replace these with actual drawing commands
+        next.draw(1, 1);
+        // ...
+        next.draw(4, 3);
+
+        swap();
+    }
+
+    public Framebuffer getBuffer() {
+        return current;
+    }
+
+    private void swap() {
+        Framebuffer temp = current;
+        current = next;
+        next = temp;
     }
 }
