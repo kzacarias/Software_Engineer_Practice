@@ -4,6 +4,7 @@ Here is the link to there repository to see the example code about the burger: h
 
 1. Ok so for the factory implementation, it is important to realize that there are key terms such as Product, Factory, Creator
 2. Something straight forward was that the product construction code will be called the factory, which the factory can either be a class or a method depending on the situation. 
+3. The YT video talked about the relation between Resturant, Burger, Veggie and Beef Burger. 
 
 For reference, here is some notable code from the reposity YT channel that should be noted about the burger situation 
 1. The Creator (Resturant) was an abstract class
