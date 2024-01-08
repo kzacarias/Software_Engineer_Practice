@@ -1,0 +1,1 @@
+The Simplest game loop just consists of the three processes found in the file. What happens with GameLoops is that depending on how fast the computer is, it can speed up the game or slow it down. This is why the WithTime accounts for that and introduces forced wait times so that the games is played at consistent speed.
