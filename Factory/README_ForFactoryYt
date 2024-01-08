@@ -1,0 +1,17 @@
+Here is the source I took it from: https://www.youtube.com/watch?v=EdFq_JIThqM&t=98s&ab_channel=Geekific
+
+Here is the link to there repository to see the example code about the burger: https://github.com/geekific-official/geekific-youtube/
+
+1. Ok so for the factory implementation, it is important to realize that there are key terms such as Product, Factory, Creator
+2. Something straight forward was that the product construction code will be called the factory, which the factory can either be a class or a method depending on the situation. 
+
+For reference, here is some notable code from the reposity YT channel that should be noted about the burger situation 
+1. The Creator (Resturant) was an abstract class
+2. Product (Burger) was an interface
+
+For reference, if you are looking at Factoring Guru
+1. The Creator (Dialog) was an abstract class
+2. Product (Button) was an interface
+ 
+Similarity between both: 
+1. They both of an abstract and interface classes so it would be good idea to look at the code for this! I'll include both UML diagrams in the google docs.
