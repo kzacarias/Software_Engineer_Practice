@@ -1,0 +1,9 @@
+This is the readme fo the Java Version
+
+1. The abstract class is made so that the rest of the entities or enemies that are created have certain characteritics. The game so far will just be giving characteristics for the enemies and having them be updated all at once in the Game Loop
+
+The game makes a class world that can be filled with entities
+
+Within world will be the game loop which contains the Update Loop. The update loop will update each object in entities. 
+
+The classes after that are enemies with their behavior. One is a skeleton that walks back and forth while the other is a statue that shoots lightning at the player

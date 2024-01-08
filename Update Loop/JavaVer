@@ -1,0 +1,89 @@
+// Java Version
+
+// Basic class for an entity
+abstract class Entity {
+    private double x;
+    private double y;
+
+    public Entity() {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    // Abstract method to be implemented by subclasses
+    public abstract void update();
+
+    // Getters
+    public double getX() { return x; }
+    public double getY() { return y; }
+
+    // Setters
+    public void setX(double x) { this.x = x; }
+    public void setY(double y) { this.y = y; }
+}
+
+// Class to manage and update all entities
+class World {
+    private Entity[] entities; // References to Entity objects
+    private int numEntities;
+
+    public World() {
+        // Assuming a constant for MAX_ENTITIES somewhere
+        this.entities = new Entity[MAX_ENTITIES];
+        this.numEntities = 0;
+    }
+
+    public void gameLoop() {
+        while (true) {
+            // Handle user input...
+
+            // Update each entity
+            for (int i = 0; i < numEntities; i++) {
+                entities[i].update();
+            }
+
+            // Physics and rendering...
+        }
+    }
+}
+
+// Skeleton enemy using Entity class
+class Skeleton extends Entity {
+    private boolean patrollingLeft;
+
+    public Skeleton() {
+        this.patrollingLeft = false;
+    }
+
+    public void update() {
+        if (patrollingLeft) {
+            setX(getX() - 1);
+            if (getX() == 0) patrollingLeft = false;
+        } else {
+            setX(getX() + 1);
+            if (getX() == 100) patrollingLeft = true;
+        }
+    }
+}
+
+// Statue enemy using Entity class
+class Statue extends Entity {
+    private int frames;
+    private int delay;
+
+    public Statue(int delay) {
+        this.frames = 0;
+        this.delay = delay;
+    }
+
+    public void update() {
+        if (++frames == delay) {
+            shootLightning();
+            frames = 0; // Reset the timer
+        }
+    }
+
+    private void shootLightning() {
+        // Shoot the lightning...
+    }
+}

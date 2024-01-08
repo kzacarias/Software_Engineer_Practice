@@ -1,4 +1,4 @@
-
+//C++, other file has approximate translation
 // THIS CODE MAKES A BASIC CLASS FOR AN ENEMY AND THEN MAKES THEM UPDATEABLE
 // Entity implements basic information for an enemy
 class Entity
