@@ -1,0 +1,24 @@
+double previous = getCurrentTime();
+double lag = 0.0;
+while (true)
+{
+  double current = getCurrentTime();
+  double elapsed = current - previous;
+  previous = current;
+  lag += elapsed;
+
+  processInput();
+
+  while (lag >= MS_PER_UPDATE)
+  {
+    update();
+    lag -= MS_PER_UPDATE;
+  }
+
+  render();
+}
+
+//Always look out for these in Game Loop
+//processInput(), update(), render()
+//Basically, take input, handle input and change game state, a
+//and make it appear visually for the user

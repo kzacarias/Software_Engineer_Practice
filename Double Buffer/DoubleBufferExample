@@ -1,0 +1,57 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class DoubleBufferExample extends JPanel {
+
+    // Off-screen buffer
+    private Image offScreenImage = null;
+    private Graphics offScreenGraphics = null;
+    private Dimension screenDimension = null;
+
+    public DoubleBufferExample() {
+        // Initialize your application's visuals here
+    }
+
+    // Method to handle the custom drawing
+    private void doDrawing(Graphics g) {
+        // Your drawing logic here, for example:
+        g.setColor(Color.BLUE);
+        g.fillRect(50, 50, 100, 100);  // Just an example
+    }
+
+    // Override the paintComponent method to implement double buffering
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        // Get the current size of the panel
+        Dimension currentDim = getSize();
+
+        // Check if the off-screen buffer needs to be recreated
+        if (offScreenImage == null || !currentDim.equals(screenDimension)) {
+            screenDimension = currentDim;
+            offScreenImage = createImage(screenDimension.width, screenDimension.height);
+            if (offScreenGraphics != null) {
+                offScreenGraphics.dispose();
+            }
+            offScreenGraphics = offScreenImage.getGraphics();
+        }
+
+        // Clear the off-screen buffer
+        offScreenGraphics.clearRect(0, 0, screenDimension.width, screenDimension.height);
+
+        // Perform all drawing operations on the off-screen buffer
+        doDrawing(offScreenGraphics);
+
+        // Copy the off-screen buffer to the screen
+        g.drawImage(offScreenImage, 0, 0, this);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Double Buffer Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new DoubleBufferExample());
+        frame.setSize(400, 400);
+        frame.setVisible(true);
+    }
+}
