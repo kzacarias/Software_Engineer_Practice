@@ -1,0 +1,15 @@
+Here is the source I took it from: https://www.youtube.com/watch?v=DcFhITC9v0E&ab_channel=Geekific
+
+Here is the link to there repository to see the example code about the burger: https://github.com/geekific-official/geekific-youtube/
+
+1. Remember it is used when we are not able to access the private attributes and it has a lot of attributes
+
+For reference, here is some notable code from the reposity YT channel that should be noted 
+1. Well tbh implementing the prototype code is dificult. One thing that is notable is that the Prototype class is an interface. 
+2. A concrete class, is a just a class that implements all the methods that it is using. Basically not wasting any class it has. 
+
+For reference, if you are looking at Factoring Guru
+1. Basically same thing as the vid. 
+ 
+Similarity between both: 
+1. They have interfaces for the prototype and have this client class that has a relationship with the interface. Specifically Aggregation... look at the UML diagram to see the Aggregation relationship. 
