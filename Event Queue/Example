@@ -1,0 +1,54 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+// Event class - simple representation of an event
+class Event {
+    private String description;
+
+    public Event(String description) {
+        this.description = description;
+    }
+
+    public void processEvent() {
+        System.out.println("Processing: " + description);
+        // Implement event-specific processing logic here
+    }
+}
+
+// EventQueue class - manages queueing and processing events
+class EventQueue {
+    private Queue<Event> queue;
+
+    public EventQueue() {
+        queue = new LinkedList<>();
+    }
+
+    // Add an event to the queue
+    public void enqueue(Event event) {
+        queue.add(event);
+    }
+
+    // Process all events in the queue
+    public void processEvents() {
+        while (!queue.isEmpty()) {
+            Event event = queue.poll(); // Retrieves and removes the head of this queue
+            if (event != null) {
+                event.processEvent();
+            }
+        }
+    }
+}
+
+public class EventQueueDemo {
+    public static void main(String[] args) {
+        EventQueue eventQueue = new EventQueue();
+
+        // Simulate adding events to the queue
+        eventQueue.enqueue(new Event("First Event"));
+        eventQueue.enqueue(new Event("Second Event"));
+        eventQueue.enqueue(new Event("Third Event"));
+
+        // Process all queued events
+        eventQueue.processEvents();
+    }
+}

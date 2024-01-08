@@ -1,0 +1,16 @@
+Readme for Example Java of an Event Queue
+
+
+Event Class: This represents a generic event. Here, it's just a wrapper around a string description, but in a real-world scenario, it
+could contain a wide range of data relevant to the event, such as type, source, time, and other context-specific information.
+
+
+
+EventQueue Class: This manages the queue of events. It provides methods to enqueue new events (enqueue) and to process all events (processEvents). 
+The processing here is sequential and simple for demonstration purposes. The LinkedList is used as the implementation of the Queue interface in 
+Java, providing efficient handling of elements.
+
+
+
+EventQueueDemo Class: This is a simple demonstration of enqueuing and processing events. It creates an instance of EventQueue, 
+adds some Event objects to it, and then processes the events.
