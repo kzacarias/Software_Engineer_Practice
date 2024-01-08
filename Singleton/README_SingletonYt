@@ -1,0 +1,39 @@
+Here is the source I took it from: https://www.youtube.com/watch?v=tSZn4wkBIu8&t=79s&ab_channel=Geekific
+Here is the link to there repository to see the example code about the burger: https://github.com/geekific-official/geekific-youtube/
+
+1. Important note about Singleton is that you only want one instance
+2. When multiple people are coming to get the instance, that is when Singleton gets complicated but I'll explain further at the bottom how the YT channel proceeded to fix this issue. 
+
+For reference, here is some notable code from the reposity YT channel that should be noted about this design pattern is that: 
+1. Here is the code that is very crucial to learning how to use singleton: 
+2. Key this is that the two for loops are used that are : if (resutl == null) is used to showcase how if a person A tries to retrieve the Instance and person B just like a milisecond later, it could mess up the instance and make two instances...
+public class Singleton {
+
+    private final String data;
+    private static volatile Singleton instance;
+    private Singleton(String data) {
+        this.data = data;
+    }
+    public static Singleton getInstance(String data) {
+        Singleton result = instance;
+        if (result == null) {
+            synchronized (Singleton.class) {
+                result = instance;
+                if (result == null) {
+                    instance = result = new Singleton(data);
+                }
+            }
+        }
+        return result;
+    }
+    public String getData() {
+        return data;
+    }
+}
+
+For reference, if you are looking at Factoring Guru
+1. Look at the UML Diagram... Pretty straight forward tho
+2. Look at the Singleton Code on Github
+
+Similarity between both: 
+1. They both of the getInstance method in the Singleton. The main concept is that if the instance is null that means that no instance has been made yet and the first person to get there makes an instance. If there is an instance, the if statement wont go through and itll send the only instance. Pretty Easy. 
